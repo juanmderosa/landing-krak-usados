@@ -181,12 +181,89 @@ a {
 }
 
 .seller-side {
-  background-color: var(--bg-white);
+  background-image: url("./img/vendeenkrak.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   border-right: 1px solid var(--border-color);
 }
 
 .buyer-side {
   background-color: var(--bg-light);
+  background-image: url("./img/compraenkrak.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Mejora de legibilidad sobre imágenes de fondo */
+.seller-side,
+.buyer-side {
+  position: relative;
+  color: #ffffff;
+}
+
+.seller-side::before,
+.buyer-side::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* ligero degradado para dar contraste al texto */
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.18) 0%,
+    rgba(0, 0, 0, 0.45) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+.seller-side .content,
+.buyer-side .content {
+  z-index: 2;
+  color: #ffffff;
+}
+
+.seller-side h1,
+.buyer-side h1 {
+  color: #ffffff;
+  text-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+}
+
+.seller-side p,
+.buyer-side p {
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+/* Ajustes para la etiqueta (tag) sobre imagen */
+.seller-side .tag,
+.buyer-side .tag {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+}
+
+/* Si necesita un bloque de texto más legible en pantallas pequeñas */
+@media (max-width: 900px) {
+  .hero-split {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .hero-side {
+    padding: 60px 28px;
+    min-height: 60vh;
+  }
+
+  .seller-side::before,
+  .buyer-side::before {
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.24) 0%,
+      rgba(0, 0, 0, 0.6) 100%
+    );
+  }
 }
 
 .hero-side .content {
@@ -197,12 +274,12 @@ a {
 .hero-side h1 {
   font-size: 3rem;
   margin-bottom: 20px;
-  color: var(--brand-dark);
+  color: var(--bg-white);
 }
 
 .hero-side p {
   font-size: 1.15rem;
-  color: var(--text-muted);
+  color: var(--bg-white);
   margin-bottom: 32px;
   line-height: 1.7;
 }
@@ -414,7 +491,7 @@ a {
 /* ── Contact / Lead Capture ── */
 .contact-section {
   padding: 120px 0;
-  background-color: #0d0d0d;
+  background-color: #063160;
   color: #ffffff;
 }
 

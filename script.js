@@ -66,6 +66,38 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  // ─── Hero buttons: también deben alternar el formulario de contacto ───
+  const heroFormLinks = document.querySelectorAll(
+    '.hero-side a[href="#tasar"], .hero-side a[href="#busca"]',
+  );
+  heroFormLinks.forEach((el) => {
+    el.addEventListener("click", () => {
+      const href = el.getAttribute("href") || "";
+      const targetId = href.replace("#", "");
+
+      const tasarEl = document.getElementById("tasar");
+      const buscaEl = document.getElementById("busca");
+
+      if (targetId === "tasar") {
+        if (tasarEl) tasarEl.classList.remove("hidden");
+        if (buscaEl) buscaEl.classList.add("hidden");
+        formTabBtns.forEach((b) => b.classList.remove("active"));
+        const sellerBtn = document.querySelector(
+          '.tab-btn-form[data-target="seller-form"]',
+        );
+        if (sellerBtn) sellerBtn.classList.add("active");
+      } else if (targetId === "busca") {
+        if (buscaEl) buscaEl.classList.remove("hidden");
+        if (tasarEl) tasarEl.classList.add("hidden");
+        formTabBtns.forEach((b) => b.classList.remove("active"));
+        const buyerBtn = document.querySelector(
+          '.tab-btn-form[data-target="buyer-form"]',
+        );
+        if (buyerBtn) buyerBtn.classList.add("active");
+      }
+    });
+  });
+
   // ─── Formularios ───
   document.querySelectorAll(".lead-form").forEach((form) => {
     // ✅ limpiar errores en tiempo real
