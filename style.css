@@ -107,6 +107,7 @@ a {
   min-width: 90px;
   display: block;
   object-fit: contain;
+  filter: hue-rotate(#e74c3c);
 }
 
 /* ── Buttons ── */
